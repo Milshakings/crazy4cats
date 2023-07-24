@@ -18,8 +18,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_161134) do
     t.string "title"
     t.string "description"
     t.datetime "when_went"
+    t.bigint "country_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_articles_on_country_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -39,12 +41,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_161134) do
   end
 
   create_table "reactions", force: :cascade do |t|
-    t.bigint "article_id", null: false
+    t.bigint "article_id"
     t.bigint "user_id", null: false
     t.string "kind"
+    t.string "reaction_type"
+    t.bigint "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_reactions_on_article_id"
+    t.index ["comment_id"], name: "index_reactions_on_comment_id"
     t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
@@ -62,8 +67,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_161134) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "countries"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "reactions", "articles"
+  add_foreign_key "reactions", "comments"
   add_foreign_key "reactions", "users"
 end

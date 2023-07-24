@@ -12,8 +12,8 @@ until Country.count == 20 do
     end
     countries = Country.all
     until Article.count == 100 do
-    Article.create(title: Faker::Book.title, description:
-    Faker::Lorem.paragraph_by_chars(number: 200, supplemental: false), when_went:
+    Article.create(title: Faker::Creature::Cat.name, description:
+    Faker::Creature::Cat.breed, when_went:
     Faker::Date.between(from: 10.years.ago, to: Date.today), country_id:
     countries.sample.id)
     end
@@ -28,7 +28,7 @@ until Country.count == 20 do
     articles = Article.all
     users = User.all
 
-    until Comment.count == 1000 do
+    until Comment.count == 200 do
         Comment.create(content: Faker::Lorem.paragraph_by_chars(number: 200,
         supplemental: false), article_id: articles.sample.id, user_id:
         users.sample.id)

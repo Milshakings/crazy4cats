@@ -31,7 +31,7 @@ class ArticlesTest < ApplicationSystemTestCase
     fill_in "Description", with: @article.description
     fill_in "Title", with: @article.title
     fill_in "When went", with: @article.when_went
-    fill_in "Country", with: @article.country
+    fill_in "Country", with: @article.country_id
     click_on "Update Article"
 
     assert_text "Article was successfully updated"
