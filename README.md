@@ -2,7 +2,7 @@
 
 Crazy4Cats Sitio web para fanticos de los Michis con Ruby on Rails y Heroku
 
-Web heroku: 
+Web heroku: https://crazygatitos-d4d9738e6389.herokuapp.com/ 
 
 Descripción Desarrollo de sitio con seguridad en los que los Posts estarán en la pagina primaria, y se podrán agregar nuevos post o news solo inscribiendose en el sitio mediante la creación de un usuario. Modelo N a N.
 
